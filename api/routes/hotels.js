@@ -1,13 +1,12 @@
 import express from "express";
-import { createError } from "../utils/error.js";
 import { createHotel, deleteHotel, getAllHotel, getHotel, updateHotel } from "../controllers/hotel.controllers.js";
+import { verifyAdmin } from "../utils/verifyToken.js"
 
 const router = express.Router();
 
-// CREATE
-router.post("/", createHotel)
-router.put("/:id", updateHotel)
-router.delete("/:id", deleteHotel)
+router.post("/", verifyAdmin, createHotel)
+router.put("/:id", verifyAdmin, updateHotel)
+router.delete("/:id", verifyAdmin, deleteHotel)
 router.get("/:id", getHotel)
 router.get("/", getAllHotel)
 

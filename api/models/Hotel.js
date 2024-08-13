@@ -13,7 +13,7 @@ const HotelSchema = new Schema({
     rating : {type : Number, min : 0, max:5},
     rooms : {type : [String]},
     cheapestPrice : {type : Number, required: true},
-    featured : {type : Boolean, deafult : false},
+    featured : {type : Boolean, default : false},
 })
 
 const Hotel = mongoose.model("Hotel", HotelSchema)
